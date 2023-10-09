@@ -29,6 +29,7 @@ import Task from './screen/ScanToAdd/Task';
 import Plantsdetail2 from './screen/MyPlants/Plantsdetail2';
 import EditPlant from './screen/MyPlants/EditPlant';
 import Profile from './screen/Profile/Profile';
+import ProfileSubscription from './screen/Subscription/ProfileSubscription';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const SplashScreenComponent = () => {
@@ -226,6 +227,14 @@ function App() {
               name="Profile"
               component={Profile}
             />
+             <Stack.Screen
+              options={{
+                headerShown: false,
+              }}
+              name="ProfileSubscription"
+              component={ProfileSubscription}
+            />
+            
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
@@ -235,13 +244,17 @@ const TabNavi = () => {
   return (
     <Tab.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName="MainScreen">
+      initialRouteName="MainScreen"
+      tabBarOptions={{
+        style: { height: 80 }, // Set the custom height here
+      }}
+      >
       <Tab.Screen
         name="Mainscreen"
         component={Mainscreen}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <View style={{alignItems: 'center'}}>
+            <View style={{alignItems: 'center', marginTop:-3}}>
               <Image
                 source={
                   focused
@@ -268,7 +281,7 @@ const TabNavi = () => {
         component={MyPlants}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <View style={{alignItems: 'center'}}>
+            <View style={{alignItems: 'center', marginTop:-3}}>
               <Image
                 source={
                   focused
@@ -295,7 +308,7 @@ const TabNavi = () => {
         component={Reminder}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <View style={{alignItems: 'center'}}>
+            <View style={{alignItems: 'center', marginTop:-3}}>
               <Image
                 source={
                   focused
@@ -322,7 +335,7 @@ const TabNavi = () => {
         component={Community}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <View style={{alignItems: 'center'}}>
+            <View style={{alignItems: 'center', marginTop:-3}}>
               <Image
                 source={
                   focused

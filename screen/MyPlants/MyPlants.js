@@ -246,9 +246,11 @@ export default function MyPlants({navigation}) {
 
           <TouchableOpacity
             style={styles.button}
-            onPress={() => {
-              navigation.navigate('');
-            }}>
+            // onPress={() => {
+            //   navigation.navigate('AddManuallyPlants');
+            // }}
+            
+            >
             <Image
               source={require('../../assets/plus.png')}
               style={{
@@ -259,9 +261,7 @@ export default function MyPlants({navigation}) {
             />
             <Text style={styles.buttonText}>Create Space</Text>
           </TouchableOpacity>
-          <ScrollView
-          showsVerticalScrollIndicator={false}
-          >
+          <ScrollView showsVerticalScrollIndicator={false}>
             {plantDataArray.map(plantDataItem => (
               <View
                 key={plantDataItem.id}
@@ -415,15 +415,17 @@ export default function MyPlants({navigation}) {
             )}
           </ScrollView>
         </View>
-        {/* Floating button  */}
+      
         <TouchableOpacity
           style={{
             position: 'absolute',
-            bottom: '5%', // Adjust the bottom value as needed
+            bottom: 15, // Adjust the bottom value as needed
             // Adjust the bottom value as needed
             right: '5%',
           }}
-          // onPress={}
+          onPress={()=>{
+            navigation.navigate("AddManuallyPlants")
+          }}
         >
           <View
             style={{
