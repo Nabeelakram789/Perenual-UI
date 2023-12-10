@@ -191,7 +191,7 @@ export default function SignUp({navigation}) {
 
       <View
       style={{
-        width:"100%"
+        width:"90%"
         , alignSelf:"center",
         alignItems:"center"
       }}
@@ -331,7 +331,6 @@ export default function SignUp({navigation}) {
         </View>
       </TouchableOpacity>
       </View>
-
     </LinearGradient>
     </ScrollView>
   );
