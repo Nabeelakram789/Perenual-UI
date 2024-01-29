@@ -11,11 +11,13 @@ import {
   Modal,
   ImageBackground,
   Alert,
+  Switch
 } from 'react-native';
 import React, {useState} from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker'; // Import DateTimePicker
 import ImagePicker from 'react-native-image-crop-picker';
 import {SwipeListView} from 'react-native-swipe-list-view';
+import Plant from '../../Components/Plant';
 
 export default function Plantsdetail2({navigation}) {
   const [text, setText] = useState('');
@@ -37,7 +39,16 @@ export default function Plantsdetail2({navigation}) {
     const textColor = item.nextWatering ? '#1BBFA0' : '#E74C3C';
 
     return (
-      <View style={{}}>
+      <View style={{
+paddingHorizontal:10,
+shadowColor: '#000',
+shadowOffset: { width: 0, height: 2 },
+shadowOpacity: 0.2,
+shadowRadius: 4,
+// For Android
+// elevation: 4,
+        height:96, backgroundColor:"#fff", width:"99%", marginBottom:10, justifyContent:"center", borderRadius:16, elevation:1, marginHorizontal:3
+      }}>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('PlantDetail');
@@ -47,7 +58,7 @@ export default function Plantsdetail2({navigation}) {
               flexDirection: 'row',
               justifyContent: 'space-between',
               alignItems: 'center',
-              marginBottom: 16, // Add margin between items
+              // marginBottom: 16, // Add margin between items
             }}>
             <View
               style={{
@@ -85,17 +96,15 @@ export default function Plantsdetail2({navigation}) {
             </View>
           </View>
 
-          <View
-            style={{
-              width: '100%',
-              height: 1,
-              backgroundColor: '#E5E5E5',
-              marginBottom: 20,
-            }}
-          />
+      
         </TouchableOpacity>
       </View>
     );
+  };
+  const [isSwitchOn1, setIsSwitchOn1] = useState(false);
+
+  const toggleSwitch1 = () => {
+    setIsSwitchOn1(previousState => !previousState);
   };
   const plantData = [
     {
@@ -717,6 +726,7 @@ export default function Plantsdetail2({navigation}) {
                         style={{
                           flexDirection: 'row',
                           marginTop: 20,
+                          alignItems:"center"
                         }}>
                         <Image
                           source={require('../../assets/Grass.png')}
@@ -888,6 +898,58 @@ export default function Plantsdetail2({navigation}) {
                           onChange={handleTimeChange}
                         />
                       )}
+                      <View
+                      style={{
+                        width:"100%",
+                        flexDirection:"row",
+                        justifyContent:"space-between",
+                        alignItems:"center"
+                      }}
+                      >
+
+                    
+                       <View
+                        style={{
+                          flexDirection: 'row',
+                          marginTop: 20,
+                          alignItems:"center"
+                        }}>
+                        <Image
+                          source={require('../../assets/Re.png')}
+                          style={{
+                            width: 24,
+                            height: 24,
+                          }}
+                        />
+                        <Text
+                          style={{
+                            color: '#161C1C',
+                            marginLeft: 10,
+                            fontSize: 16, // Adjust the font size as needed
+                            fontWeight: '600',
+                          }}>
+                          Repeat
+                        </Text>
+                      </View>
+                      <Switch
+
+                      style={{
+marginTop:18
+                      }}
+                  trackColor={{false: '#767577', true: '#1BBFA0'}}
+                  thumbColor={isSwitchOn1 ? '#ffffff' : '#f4f3f4'}
+                  ios_backgroundColor="#3e3e3e"
+                  onValueChange={toggleSwitch1}
+                  value={isSwitchOn1}
+                />
+                      </View>
+                      <View
+                        style={{
+                          width: '100%',
+                          height: 1,
+                          marginTop: 10,
+                          backgroundColor: '#E5E5E5',
+                        }}></View>
                     </View>
                   </View>
                 </View>
@@ -1162,11 +1224,9 @@ export default function Plantsdetail2({navigation}) {
                 width: '100%',
                 marginBottom: 20,
               }}>
-              <FlatList
-                data={data3}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-              />
+             
+
+             <Plant/>
               <View
                 style={{
                   marginBottom: 20,
@@ -1262,7 +1322,6 @@ export default function Plantsdetail2({navigation}) {
             <Text
               style={{
                 fontSize: 16,
-
                 color: '#161C1C',
                 fontWeight: 'bold',
                 // alignSelf: 'center',
